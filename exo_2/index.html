@@ -6,9 +6,16 @@
    <title>Guess a number</title>
 </head>
 <body>
-   <div>
-      <p id="affichage"></p>
+   <div id="main">
+      <label for="guess">Choisissez un nombre : </label>
+      <div style="display: flex; gap: 10px;">
+         <p id="min">0 	&lt; </p>
+         <input type="text" id="guess" name="guess">
+         <p id="max"> &lt; 50</p>
+      </div>
+      <button type="button" onclick="gameplay()">Envoyer</button>
    </div>
+
 
    <script src="script.js"></script>
 </body>
