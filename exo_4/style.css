@@ -1,0 +1,22 @@
+#converter {
+   display: flex;
+}
+
+#buttons {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   margin: 0 5px;
+   gap: 5px;
+}
+
+#buttons input {
+   background-color: pink;
+}
+
+#clear {
+   margin: 10px 0;
+   background-color: skyblue;
+   color: blue;
+   font-weight: bold;
+}
