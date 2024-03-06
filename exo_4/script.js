@@ -65,7 +65,7 @@ function getMorseCharacterList(str) {
 }
 
 function translateLatinCharacter(char) {
-  if (char === " ") return "/";
+  if (char === " ") return " / ";
   else {
     console.log(`${char} to`, latinToMorse[char]);
     return latinToMorse[char];
@@ -85,7 +85,7 @@ function encode(str) {
   let encodedList = [];
   for (let i = 0; i < charList.length; i++) {
     encodedList.push(translateLatinCharacter(charList[i]));
-    console.log(encodedList);
+    //console.log(encodedList);
     if (
       i != charList.length - 1 &&
       charList[i] != " " &&
