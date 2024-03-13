@@ -1,8 +1,11 @@
 function maxDaysInMonth(monthNumber, year) {
-   if (monthNumber === 2)
+   if (monthNumber === 2) {
       if ((year % 4 === 0 && year % 100 > 0) || year % 400 === 0) return 29;
       return 28;
+   }
+
    if (monthNumber === 1, 3, 5, 7, 8, 10, 12) return 31;
+
    return 30;
 }
 
@@ -64,7 +67,7 @@ console.log(isPalindrome("03/04/2001"), "\n");
 console.log(isPalindrome("05/12/1992"), "\n");
 */
 
-console.log(getNextPalindromes(1))
+console.log(getNextPalindromes(7))
 
 console.log(isValidDate("29/02/2024"));
 console.log(isValidDate("29/02/2023"));
