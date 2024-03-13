@@ -23,12 +23,9 @@ function isValidDate(string) {
 }
 
 function isPalindrome(string) {
-   if (isValidDate(string) === false) return false;
+   const reversedString = string.split("").toReversed().join("");
 
-   const date = string.replaceAll("/", "");
-   const reversedDate = date.split("").toReversed().join("");
-
-   if (date.localeCompare(reversedDate) === 0) return true;
+   if (string.localeCompare(reversedString) === 0) return true;
    return false;
 }
 
@@ -39,7 +36,7 @@ function getNextPalindromes(x) {
    while (x > 0) {
       date.setDate(date.getDate() + 1);
       const stringDate = date.toLocaleString("fr-FR", {dateStyle: "short"});
-      if (isPalindrome(stringDate)) {
+      if (isDatePalindrome(stringDate)) {
          nextPalindromes.push(stringDate);
          x--;
       }
@@ -47,6 +44,15 @@ function getNextPalindromes(x) {
 
    return nextPalindromes;
 }
+
+function isDatePalindrome(string) {
+   if (isValidDate(string) === false) return false;
+
+   const dateString = string.replaceAll("/", "");
+   if (isPalindrome(dateString)) return true;
+   return false;
+}
+
 
 /**********************************************************************/
 
