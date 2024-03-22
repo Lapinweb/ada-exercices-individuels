@@ -1,0 +1,40 @@
+body {
+   width: 96vw;
+   margin: 0 2vw;
+}
+
+main {
+   width: 90%;
+   margin: auto;
+   font-size: large;
+}
+
+#match-viz {
+   margin: 15px auto;
+   padding: 5px;
+}
+
+#matches-draw {
+   width: 90%;
+   margin: 0 auto;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+}
+
+#matches-draw span {
+   font-weight: bolder;
+   font-size: 4em;
+   color: burlywood;
+}
+
+#player-turn {
+   text-align: right;
+   font-weight: bold;
+}
+
+.win-message {
+   font-weight: bolder;
+   font-size: 3em;
+   text-align: center;
+}

@@ -4,21 +4,34 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Jeu des allumettes</title>
+      <link rel="stylesheet" href="style.css" />
    </head>
    <body>
       <main>
-         <p id="matches-count"></p>
-         <p id="playerNumber"></p>
-         <p id="player-turn">Tour du joueur 1 :</p>
-         <select name="matches-number" id="matches-number">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-         </select>
-         <button id="remove">Remove matches</button>
+         <div id="game-info">
+            <p p id="playerNumber">Nombre d'allumettes :</p>
+         </div>
+
+         <div>
+            <label for="matches-number">Retirer 
+            <select name="matches-number" id="matches-number">
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+            alumettes
+         </label>
+            <button id="remove">Jouer</button>
+         </div>
+
+         <div id="match-viz">
+            <p id="matches-count"></p>
+            <p id="player-turn">Tour du joueur 1</p>
+            <div id="matches-draw"></div>
+         </div>
       </main>
 
       <script src="script.js"></script>
