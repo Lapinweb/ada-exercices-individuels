@@ -1,28 +1,4 @@
-import argparse
-
-"""
-#Add args
-parse = argparse.ArgumentParser()
-parse.add_argument(
-   "--codemaker",
-   nargs="*",
-   type=str,
-   default=["red", "blue"]
-)
-parse.add_argument(
-   "--codebreaker",
-   nargs="*",
-   type=str,
-   default=[]
-)
-
-#Get args
-args = parse.parse_args()
-codemaker_input = args.codemaker
-codebreaker_input = args.codebreaker
-print("codemaker: ", codemaker_input)
-print("codebreaker: ", codebreaker_input)
- """
+import random
 
 def is_valid_color(color_to_check, available_colors_list):
    for color in available_colors_list:
@@ -39,11 +15,11 @@ def is_valid_combination(combination):
 def get_combination_input(n):
    full_input = []
    while len(full_input) < n:
-      new_input = input("Chose a new color: ")
+      new_input = input(f"Choose a color from {pawn_colors} : ")
       while not is_valid_color(new_input, pawn_colors):
          new_input = input("Invalid input, retry: ")
       full_input.append(new_input)
-      print("code : ", full_input)
+      print("Selected pawns : ", full_input)
    return full_input
 
 def check_colors(maker_code, breaker_code):
@@ -70,21 +46,33 @@ def check_colors(maker_code, breaker_code):
    
    return check_result
    
+def generate_pawns_suit(n):
+   result = []
+   for i in range(n):
+      random_index = random.randint(0, len(pawn_colors) - 1)
+      result.append(pawn_colors[random_index])
+   return result
 
 def game(number_of_pawns):
-   print("Codemaker's turn :")
-   codemaker_input = get_combination_input(number_of_pawns)
+   #Manual input of code to guess
+   # print("Codemaker's turn :")
+   # codemaker_input = get_combination_input(number_of_pawns)
+   
+   #Computer generated input of code to guess
+   codemaker_input = generate_pawns_suit(number_of_pawns)
+    
+   #User input
    print("Codebreaker's turn")
    codebreaker_input = get_combination_input(number_of_pawns)
    
-   print("codemaker : ", codemaker_input)
-   print("codebreaker : ", codebreaker_input)
 
    pawn_check = check_colors(codemaker_input, codebreaker_input)
    
    while not pawn_check[0] == number_of_pawns:
+      # print("codemaker : ", codemaker_input)
+      # print("codebreaker : ", codebreaker_input)
       print(pawn_check)
-      print("Wrong ! Retry : ")
+      print("\nWrong ! Retry : ")
       codebreaker_input = get_combination_input(number_of_pawns)
       pawn_check = check_colors(codemaker_input, codebreaker_input)
       
