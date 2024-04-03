@@ -27,7 +27,8 @@ function displayTree(extraFloors) {
       floor <= extraFloors + 1;
       floor++, starsNumber += 2
    ) {
-      if ((floor-1) % 3 === 0 && floor != 1) { // if previous floor is mutiple of 3
+      if ((floor - 1) % 3 === 0 && floor != 1) {
+         // if previous floor is mutiple of 3
          starsNumber = highestFloorStarNumbers;
          highestFloorStarNumbers += 2;
       }
@@ -38,14 +39,26 @@ function displayTree(extraFloors) {
    let gap = 0;
    if ((extraFloors + 1) % 3 === 1) gap = 2;
    if ((extraFloors + 1) % 3 === 2) gap = 1;
-      for (let floor = extraFloors + 1; floor >= 0; floor--, gap++) {
-         treeArray[floor] = addSpaces(gap) + treeArray[floor];
-         if (floor - 1 === 0) continue;
-         else if (floor - 1 === 3) gap -= 1;
-         else if ((floor - 1) % 3 === 0) gap -= 2;
+   for (let floor = extraFloors + 1; floor >= 0; floor--, gap++) {
+      treeArray[floor] = addSpaces(gap) + treeArray[floor];
+      if (floor - 1 === 0) continue;
+      else if (floor - 1 === 3) gap -= 1;
+      else if ((floor - 1) % 3 === 0) gap -= 2;
+   }
+
+   //add trunk
+   if ((extraFloors + 1) / 3 <= 1) {
+      treeArray[extraFloors + 2] = addSpaces(gap - 1) + "#"
+   } else {
+      //number of "triangles" on the tree
+      let treeLevels = Math.ceil((extraFloors + 1) / 3);
+      //for each "triangle", add a line for the trunk
+      for (let i = 0, floor = extraFloors + 2; i < treeLevels; i++, floor++) {
+         treeArray[floor] = addSpaces(gap - 2) + "##"
       }
+   }
 
    return treeArray.join("\n");
 }
 
-console.log(displayTree(9));
+console.log(displayTree(15));
