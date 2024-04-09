@@ -1,3 +1,7 @@
+const treeNode = document.getElementById("tree");
+
+/*****************************************/
+
 function addSpaces(numberOfSpaces) {
    let res = "";
    for (let i = 0; i < numberOfSpaces; i++) {
@@ -9,12 +13,18 @@ function addSpaces(numberOfSpaces) {
 function addStars(numberOfStars) {
    let res = "";
    for (let i = 0; i < numberOfStars; i++) {
-      res += "*";
+      //randomly add decorations
+      if (i > 0 && i < numberOfStars - 1 && res.slice(-1) === "*") {
+         let random = Math.random();
+         if (random < 0.15) res += "o";
+         else if (random > 0.85) res += "+";
+         else res += "*";
+      } else res += "*";
    }
    return res;
 }
 
-function displayTree(extraFloors) {
+function drawTree(extraFloors) {
    let treeArray = [];
    let highestFloorStarNumbers = 5;
 
@@ -48,17 +58,67 @@ function displayTree(extraFloors) {
 
    //add trunk
    if ((extraFloors + 1) / 3 <= 1) {
-      treeArray[extraFloors + 2] = addSpaces(gap - 1) + "#"
+      treeArray[extraFloors + 2] = addSpaces(gap - 1) + "#";
    } else {
       //number of "triangles" on the tree
       let treeLevels = Math.ceil((extraFloors + 1) / 3);
       //for each "triangle", add a line for the trunk
       for (let i = 0, floor = extraFloors + 2; i < treeLevels; i++, floor++) {
-         treeArray[floor] = addSpaces(gap - 2) + "##"
+         treeArray[floor] = addSpaces(gap - 2) + "##";
       }
    }
 
-   return treeArray.join("\n");
+   return treeArray;
 }
 
-console.log(displayTree(15));
+function displayTree(floorNumber) {
+   const treeArray = drawTree(floorNumber);
+   const treeLineArray = [];
+   treeArray.forEach((treeElement) => {
+      treeLineArray.push(treeElement.split(""));
+   });
+
+   for (let i = 0; i < treeLineArray.length; i++) {
+      const treeLine = treeLineArray[i];
+      for (let j = 0; j < treeLine.length; j++) {
+         const element = document.createElement("span");
+         element.append(treeLine[j]);
+         switch (treeLine[j]) {
+            case "/":
+            case "\\":
+            case "*":
+               element.classList.toggle("green");
+               break;
+
+            case "+":
+               element.classList.toggle("yellow");
+               break;
+
+            case "o":
+               element.classList.toggle("red");
+               break;
+
+            case "#":
+               element.classList.toggle("brown");
+               break;
+
+            default:
+               break;
+         }
+         treeNode.append(element);
+      }
+
+      const linebreak = document.createElement("br");
+      if (i != treeArray.length - 1) treeNode.append(linebreak);
+   }
+}
+
+
+/***********************************************/
+const treeInput = document.getElementById("tree-height");
+treeInput.addEventListener("change", () => {
+   treeNode.replaceChildren();
+   displayTree(parseInt(treeInput.value));
+});
+
+displayTree(parseInt(treeInput.value));

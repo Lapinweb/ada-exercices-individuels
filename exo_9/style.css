@@ -1,0 +1,70 @@
+body {
+   margin: 0;
+   width: 100vw;
+   background-color: paleturquoise;
+   overflow-x: hidden;
+}
+
+main {
+   width: 100%;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 100px 150px 1fr;
+   justify-items: center;
+}
+
+h1 {
+   color: darkgreen;
+   grid-row: 1 / span 1;
+}
+
+#tree-input {
+   width: 100%;
+   font-size: 2em;
+   grid-row: 2 / span 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#tree-height {
+   width: 180px;
+   height: 70px;
+   margin-left: 5%;
+   text-align: center;
+   font-size: 2em;
+}
+
+#tree-container {
+   
+}
+
+pre {
+   width: 100%;
+   margin: 0 5%;
+   display: block;
+   font-size: 2em;
+   font-weight: bolder;
+   grid-row: 3 / span 1;
+   justify-self: flex-start;
+}
+
+pre span {
+   display: inline-block;
+}
+
+.green {
+   color: green;
+}
+
+.red {
+   color: red;
+}
+
+.yellow {
+   color: yellow;
+}
+
+.brown {
+   color: brown;
+}
