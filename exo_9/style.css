@@ -5,11 +5,11 @@ body {
    overflow-x: hidden;
 }
 
-main {
+.container {
    width: 100%;
    display: grid;
    grid-template-columns: 1fr;
-   grid-template-rows: 100px 150px 1fr;
+   grid-template-rows: 100px 1fr;
    justify-items: center;
 }
 
@@ -19,33 +19,36 @@ h1 {
 }
 
 #tree-input {
-   width: 100%;
+   padding: 2%;
+   position: fixed;
+   top: 5%;
    font-size: 2em;
-   grid-row: 2 / span 1;
    display: flex;
-   justify-content: center;
    align-items: center;
+   z-index: 1;
 }
 
 #tree-height {
    width: 180px;
    height: 70px;
-   margin-left: 5%;
    text-align: center;
    font-size: 2em;
 }
 
 #tree-container {
-   
+   position: relative;
+   width: 100%;
 }
 
 pre {
-   width: 100%;
-   margin: 0 5%;
+   position: absolute;
+   left: 50%;
+   transform: translate(-50%);
+   margin: 0;
    display: block;
    font-size: 2em;
    font-weight: bolder;
-   grid-row: 3 / span 1;
+   grid-row: 2 / span 1;
    justify-self: flex-start;
 }
 
@@ -67,4 +70,8 @@ pre span {
 
 .brown {
    color: brown;
+}
+
+.blue {
+   color: blue;
 }

@@ -7,10 +7,8 @@
       <link rel="stylesheet" href="style.css" />
    </head>
    <body>
-      <main>
-         <h1>🎄 Roi des forêts 🎄</h1>
-         <label id="tree-input" for="tree-height">
-            Taille du sapin : 
+         <div id="tree-input">
+            <label for="tree-height"> Taille du sapin :</label>
             <input
                type="number"
                name="tree-height"
@@ -18,9 +16,14 @@
                min="1"
                value="1"
             />
-         </label>
-         <pre id="tree"></pre>
-      </main>
+         </div>
+      <div class="container">
+         <h1>🎄 Roi des forêts 🎄</h1>
+         <div id="tree-container">
+            <pre id="tree"></pre>
+         </div>
+      </div>
+
       <script src="script.js"></script>
    </body>
 </html>

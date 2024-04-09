@@ -95,7 +95,9 @@ function displayTree(floorNumber) {
                break;
 
             case "o":
-               element.classList.toggle("red");
+               const random = Math.round(Math.random());
+               if (random) element.classList.toggle("red");
+               else element.classList.toggle("blue");
                break;
 
             case "#":
