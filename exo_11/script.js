@@ -1,5 +1,5 @@
 function parseString(string) {
-   const sameCharRegex = /(\w)\1*/g; //regex to find successive consecutive characters
+   const sameCharRegex = /(\S)\1*/g; //regex to find successive consecutive characters
    const sameCharArray = string.match(sameCharRegex); //array of smaller strings that match the regex
    const sameCharString = sameCharArray.join(" "); //fuse array in one string separated by spaces
    return sameCharString;
@@ -9,7 +9,7 @@ function describeString(string) {
    const arrayOfSmallStrings = parseString(string).split(" ");
    const descriptionArray = arrayOfSmallStrings.map((smallString) => {
       return `${smallString.length}${smallString.charAt(0)}`;
-   })
+   });
 
    return descriptionArray.join("");
 }
@@ -22,14 +22,33 @@ function suiteConway(char, n) {
       const newDescription = describeString(previousDescription);
       descriptionsArray.push(newDescription);
    }
-   return descriptionsArray.join("\n");
+   return descriptionsArray;
 }
 
+function displaySuit(suitArray) {
+   const suitDisplay = document.querySelector(".suit-display");
+   suitDisplay.replaceChildren();
+
+   suitArray.forEach((suit) => {
+      const line = document.createElement("p");
+      line.textContent = suit;
+
+      suitDisplay.appendChild(line);
+   });
+}
 
 /******************************************************/
-const tests = [
-   ["a", 3],
-   ["1", 6]
-]
-//console.log(describeString("aabbca"));
-console.log(suiteConway(...tests[1]));
+const charInput = document.getElementById("char-input");
+const numberInput = document.getElementById("number-input");
+let selectedChar = "";
+let selectedNumber = 1;
+
+charInput.addEventListener("input", (e) => {
+   selectedChar = e.target.value;
+   if (selectedChar.trim().length != 0) displaySuit(suiteConway(selectedChar, selectedNumber));
+})
+
+numberInput.addEventListener("change", (e) => {
+   selectedNumber = e.target.value;
+   if (selectedChar.trim().length != 0) displaySuit(suiteConway(selectedChar, selectedNumber));
+})
