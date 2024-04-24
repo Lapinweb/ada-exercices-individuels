@@ -44,7 +44,6 @@ def check_colors(maker_code, breaker_code):
             remaining_breaker_pawns.remove(breaker_pawn)
             break
 
-   
    return check_result
    
 def generate_pawns_suit(n):
