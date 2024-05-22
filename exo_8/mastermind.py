@@ -27,11 +27,14 @@ class Mastermind:
       column_number = 0
       row_number = 0
       for i, color in enumerate(self.colors):
-         style.configure("Color_%s.TButton" %color, foreground=color)
+         style.configure("Color_%s.TButton" %color, background=color)
+         
          color_button = ttk.Button(colors_frame, text=color.upper(), width=10, padding=5, style="Color_%s.TButton" %color,
          command=lambda selected_color = color: self.game(selected_color))
+         
          self.colors_buttons.append(color_button)
          self.colors_buttons[i].grid(column=column_number,row=row_number)
+         
          column_number += 1
          if column_number > 3:
             column_number = 0
